@@ -7,4 +7,4 @@ scrape_configs:
       - targets: ['localhost:9090']
   - job_name: 'timekeeper'
     static_configs:
-      - targets: ['${TK_TARGET_PROMETHEUS}']
+      - targets: ['host.docker.internal:8081']
