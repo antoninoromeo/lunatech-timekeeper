@@ -7,4 +7,4 @@ scrape_configs:
       - targets: ['localhost:9090']
   - job_name: 'timekeeper'
     static_configs:
-      - targets: ['host.docker.internal:8081']
+      - targets: ['http://acceptance.api.timekeeper.lunatech.fr/metrics/application']
