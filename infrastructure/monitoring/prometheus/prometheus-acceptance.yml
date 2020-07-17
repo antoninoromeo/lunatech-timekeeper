@@ -4,7 +4,7 @@ global:
 scrape_configs:
   - job_name: 'prometheus'
     static_configs:
-      - targets: ['app-59902a20-be50-4db7-b128-cc9f5a23b57e.cleverapps.io']
+      - targets: ['localhost:9090']
   - job_name: 'timekeeper'
     static_configs:
       - targets: ['185.42.117.108:443']
