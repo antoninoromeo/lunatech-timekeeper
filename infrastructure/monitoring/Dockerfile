@@ -5,3 +5,5 @@ ARG environment=dev
 
 
 ADD ./prometheus/prometheus-${environment}.yml /etc/prometheus/prometheus.yml
+
+RUN cat /etc/prometheus/prometheus.yml
