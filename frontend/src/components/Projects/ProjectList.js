@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Alert, Avatar, Button, Card, Collapse, Divider, Dropdown, List, Menu, Spin, Space} from 'antd';
 import logo from '../../img/logo_timekeeper_homepage.png';
-import {useTimeKeeperAPI} from '../../utils/services';
+import {sortListByName, useTimeKeeperAPI} from '../../utils/services';
 import EditFilled from '@ant-design/icons/lib/icons/EditFilled';
 import UserOutlined from '@ant-design/icons/lib/icons/UserOutlined';
 import LockFilled from '@ant-design/icons/lib/icons/LockFilled';
@@ -151,7 +151,9 @@ const ProjectList = () => {
     );
   }
 
-  const memberComparator = (m1, m2) => m2.manager - m1.manager;
+  const sortMember = (listOfMembers) => {
+    return sortListByName(listOfMembers).sort((a,b) => b.manager - a.manager);
+  };
 
   const DataList = ({data}) => <List
     id="tk_List"
@@ -169,7 +171,7 @@ const ProjectList = () => {
                 <div className="tk_Card_ProjectTitle">
                   <p>{item.name}</p>
                 </div>
-                <span className="tk_Card_subtitle">{item.client ? <TagProjectClient client={item.client}/> : 'No client'}
+                <span className="tk_Card_subtitle">{item.client ? <TagProjectClient client={item.client}/> : <TagProjectClient />}
                   {item.publicAccess ? <UnlockOutlined/> :
                     <LockFilled/>}<span>{item.publicAccess ? ' Public' : ' Private project'}</span></span>
               </div>
@@ -189,7 +191,7 @@ const ProjectList = () => {
               key="members">
                 <List
                   id={'tk_ProjectMembers'}
-                  dataSource={item.users.sort(((a, b) => memberComparator(a, b)))}
+                  dataSource={sortMember(item.users)}
                   renderItem={member => (
                     <List.Item>
                       <ProjectMemberTag member={member}/>
