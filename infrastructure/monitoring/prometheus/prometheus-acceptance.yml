@@ -7,4 +7,4 @@ scrape_configs:
       - targets: ['localhost:9090']
   - job_name: 'timekeeper'
     static_configs:
-      - targets: ['acceptance.api.timekeeper.lunatech.fr:443']
+      - targets: ['185.42.117.108:443']
