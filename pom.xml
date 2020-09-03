@@ -140,6 +140,12 @@
             <scope>test</scope>
             <version>${jacoco.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.tngtech.archunit</groupId>
+            <artifactId>archunit-junit5</artifactId>
+            <version>0.14.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -375,7 +381,7 @@
                 <sonar.projectName>TimeKeeper</sonar.projectName>
                 <sonar.projectKey>lunatech-labs_lunatech-timekeeper</sonar.projectKey>
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-                <!-- <sonar.login>PLEASE SET SONAR_TOKEN to a valid TOKEN</sonar.login> -->
+                <!-- <sonar.login>PLEASE SET local environment variable SONAR_TOKEN to a valid TOKEN</sonar.login> //NOSONAR -->
                 <sonar.organization>lunatech-labs</sonar.organization>
                 <sonar.coverage.jacoco.xmlReportPaths>${basedir}/${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
             </properties>
